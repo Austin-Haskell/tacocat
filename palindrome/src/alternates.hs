@@ -1,7 +1,5 @@
 import Data.Char
-import Data.Maybe
-
--- these were alternate ways of writing different functions 
+-- these were alternate ways of writing different functions
 -- and demonstrations of different syntax (guards, case expressions, function composition)
 
 
@@ -19,7 +17,7 @@ pal3 xs = if (elem ' ' xs) then pal2 xs else xs
 
 pal4 xs = if (any isUpper xs) then map toLower xs else xs
 
-pal5 xs 
+pal5 xs
     | (elem ' ' xs) && (any isUpper xs) = pal2 xs
     | elem ' ' xs                       = (concat . words) xs
     | any isUpper xs                    = map toLower xs
@@ -43,7 +41,7 @@ checkPal l l' =
 
 -- data Maybe a = Nothing | Just a
 
-checkString xs = 
+checkString xs =
 	case xs == " " of
 		True  -> Nothing
 		False -> Just xs
@@ -63,6 +61,6 @@ pal6 = do
 --         Just line1 -> do
 --             let line2 = fromJust (Just line1)
 --             checkPal (pal5 line2) (reverse (pal5 line2))
--- were able to eliminate one line from this when we realized that 
+-- were able to eliminate one line from this when we realized that
 -- pattern matching on the Just constructor already unpacks its contents
 -- for us so the fromJust (Just line1) was unnecessary
